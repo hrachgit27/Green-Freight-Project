@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Green Freight — Levon Harutyunyan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --green: #2e5e2e;
+      --green-light: #3d7a3d;
+      --green-pale: #edf3ed;
+      --tan: #f5f0e8;
+      --brown: #4a3f35;
+      --text: #2a2a2a;
+      --muted: #6b6b6b;
+      --white: #ffffff;
+      --ph-bg: #dedad2;
+      --ph-border: #c4bfb6;
+    }
+
+    body {
+      font-family: 'Source Serif 4', serif;
+      background: var(--tan);
+      color: var(--text);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--green);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.9rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+    .logo span { color: #8fce8f; }
+    .header-phone {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #c8e6c8;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+    .header-phone:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green);
+      padding: 80px 48px 110px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: var(--tan);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 230px;
+      gap: 60px;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      color: #c8e6c8;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: #8fce8f; }
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #c8e6c8;
+      max-width: 460px;
+      margin-bottom: 40px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--white);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 15px 36px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero-cta:hover { background: #8fce8f; }
+
+    /* hero portrait */
+    .hero-portrait { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .portrait-frame {
+      width: 200px; height: 260px;
+      background: rgba(255,255,255,0.1);
+      border: 3px solid rgba(255,255,255,0.2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; overflow: hidden;
+      position: relative;
+    }
+    .portrait-frame img { width:100%; height:100%; object-fit:cover; display:none; }
+    .ph-person { font-size: 3rem; opacity: 0.4; }
+    .ph-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      text-align: center; padding: 0 12px; line-height: 1.6;
+    }
+    .portrait-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      color: var(--white); letter-spacing: 0.05em; text-align: center;
+    }
+    .portrait-title {
+      font-size: 0.8rem; font-weight: 300;
+      color: #8fce8f; text-align: center;
+    }
+
+    /* ── SHARED ── */
+    .section-wrap { max-width: 960px; margin: 0 auto; padding: 80px 48px; }
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--green-light); margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--brown); line-height: 1.15; margin-bottom: 28px;
+    }
+
+    /* placeholder utility */
+    .ph-box {
+      background: var(--ph-bg);
+      border: 1px dashed var(--ph-border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; overflow: hidden;
+    }
+    .ph-box img { width:100%; height:100%; object-fit:cover; display:none; }
+    .ph-icon { font-size: 1.8rem; opacity: 0.35; }
+    .ph-txt {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.28);
+      text-align: center; padding: 0 14px; line-height: 1.55;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--tan); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 40px;
+    }
+    .service-card { background: var(--white); border-top: 4px solid var(--green); }
+    .service-card .ph-box { height: 180px; }
+    .service-card-body { padding: 28px 24px 32px; }
+    .service-card .svc-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+    .service-card h3 {
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1.15rem; letter-spacing: 0.04em;
+      color: var(--brown); margin-bottom: 10px;
+    }
+    .service-card p { font-size: 0.92rem; font-weight: 300; line-height: 1.7; color: var(--muted); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 60px; align-items: start;
+    }
+    .about-photo-col { display: flex; flex-direction: column; gap: 14px; }
+    .about-photo-col .ph-box { aspect-ratio: 3/4; width: 100%; }
+    .about-cap {
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1rem; color: var(--brown); text-align: center;
+    }
+    .about-cap span {
+      display: block; font-family: 'Source Serif 4', serif;
+      font-weight: 300; font-size: 0.8rem;
+      color: var(--green-light); margin-top: 2px;
+    }
+    .about-text p {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .about-quote {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green);
+      padding: 24px 28px; margin-top: 28px;
+    }
+    .about-quote p {
+      font-family: 'Oswald', sans-serif; font-weight: 500;
+      font-size: 1.2rem; line-height: 1.5;
+      color: var(--green); margin: 0;
+    }
+    .about-quote cite {
+      display: block; font-family: 'Source Serif 4', serif;
+      font-style: normal; font-weight: 300;
+      font-size: 0.82rem; color: var(--muted); margin-top: 10px;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--tan); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 40px;
+    }
+    .gallery-item { aspect-ratio: 4/3; }
+    .gallery-item.tall { grid-row: span 2; aspect-ratio: unset; }
+    .gallery-note {
+      text-align: center; margin-top: 18px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(0,0,0,0.25);
+    }
+
+    /* ── AREA ── */
+    #area { background: var(--tan); padding-top: 0; }
+    .area-card {
+      background: var(--white); padding: 40px;
+      display: flex; gap: 28px; align-items: flex-start;
+    }
+    .area-card-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 4px; }
+    .area-card h3 {
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1.2rem; color: var(--brown); margin-bottom: 10px;
+    }
+    .area-card p { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
+    .states { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .state-tag {
+      background: var(--green-pale); color: var(--green);
+      font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+      font-weight: 500; letter-spacing: 0.1em; padding: 6px 14px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--green); }
+    .contact-center { text-align: center; }
+    .contact-center .section-label { color: #8fce8f; }
+    .contact-center h2 { color: var(--white); }
+    .contact-center > p {
+      font-size: 1rem; font-weight: 300; line-height: 1.8;
+      color: #c8e6c8; max-width: 440px;
+      margin: 0 auto 40px;
+    }
+    .contact-card {
+      display: inline-flex; flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 36px 60px; gap: 6px;
+    }
+    .contact-card .c-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #8fce8f;
+    }
+    .contact-card a {
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 2rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .contact-card a:hover { color: #8fce8f; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e3d1e; padding: 28px 48px; text-align: center;
+      font-family: 'Oswald', sans-serif; font-size: 0.78rem;
+      letter-spacing: 0.1em; color: rgba(200,230,200,0.4);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag      { animation: fadeUp 0.5s ease 0.1s both; }
+    .hero h1       { animation: fadeUp 0.6s ease 0.2s both; }
+    .hero p        { animation: fadeUp 0.6s ease 0.32s both; }
+    .hero-cta      { animation: fadeUp 0.5s ease 0.44s both; }
+    .hero-portrait { animation: fadeUp 0.6s ease 0.28s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      header { padding: 20px 24px; }
+      .hero { padding: 56px 24px 90px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero-portrait { order: -1; align-items: flex-start; }
+      .portrait-frame { width: 150px; height: 195px; }
+      .section-wrap { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.tall { grid-row: span 1; aspect-ratio: 4/3; }
+      .area-card { flex-direction: column; }
+      .contact-card { padding: 28px 36px; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">GREEN <span>FREIGHT</span></a>
+  <a href="tel:5550000000" class="header-phone">(555) 000-0000</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Owner-Operated · West Coast</div>
+      <h1>Trucking &amp; <span>Trailer Decking</span> You Can Count On</h1>
+      <p>Load transport and trailer floor replacement done right — by one guy who takes pride in every job.</p>
+      <a href="#contact" class="hero-cta">Get In Touch</a>
+    </div>
+    <div class="hero-portrait">
+      <!-- TO ADD PHOTO: put file path in img src, then change its display:none to display:block and remove the .ph-person and .ph-label divs -->
+      <div class="portrait-frame">
+        <img src="" alt="Levon Harutyunyan" />
+        <div class="ph-person">👤</div>
+        <div class="ph-label">Add a photo<br>of Levon here</div>
+      </div>
+      <div class="portrait-name">Levon Harutyunyan</div>
+      <div class="portrait-title">Owner &amp; Operator</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section-wrap">
+    <div class="section-label">What We Do</div>
+    <h2>Simple Services,<br>Done Well</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <!-- TO ADD PHOTO: put file path in img src and change display:none → display:block, remove ph-icon and ph-txt divs -->
+        <div class="ph-box" style="height:180px">
+          <img src="" alt="Load Transport" />
+          <div class="ph-icon">🚛</div>
+          <div class="ph-txt">Add a trucking photo</div>
+        </div>
+        <div class="service-card-body">
+          <span class="svc-icon">🚛</span>
+          <h3>Load Transport</h3>
+          <p>Reliable freight hauling up and down the West Coast. Cargo picked up and delivered on time, handled with care.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="ph-box" style="height:180px">
+          <img src="" alt="Trailer Decking" />
+          <div class="ph-icon">🔩</div>
+          <div class="ph-txt">Add a decking photo</div>
+        </div>
+        <div class="service-card-body">
+          <span class="svc-icon">🔩</span>
+          <h3>Trailer Decking</h3>
+          <p>Full trailer floor replacement — worn planks pulled and replaced with quality lumber so your trailer stays road-ready.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="ph-box" style="height:180px">
+          <img src="" alt="On the job" />
+          <div class="ph-icon">🤝</div>
+          <div class="ph-txt">Add a photo of Levon at work</div>
+        </div>
+        <div class="service-card-body">
+          <span class="svc-icon">🤝</span>
+          <h3>Owner-Operated</h3>
+          <p>No middleman. When you call, you're talking directly to the person doing the work. Straightforward every time.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-photo-col">
+        <!-- TO ADD PHOTO: put file path in img src and change display:none → display:block, remove ph-icon and ph-txt divs -->
+        <div class="ph-box" style="aspect-ratio:3/4; width:100%">
+          <img src="" alt="Levon Harutyunyan" />
+          <div class="ph-icon" style="font-size:2.8rem">👤</div>
+          <div class="ph-txt">Photo of Levon</div>
+        </div>
+        <div class="about-cap">
+          Levon Harutyunyan
+          <span>Owner, Green Freight</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2>Just One Guy Who<br>Knows His Work</h2>
+        <p>Green Freight is a one-man operation built on honest work and reliability. No big fleet, no corporate overhead — just Levon, an experienced driver and tradesman who shows up, does the job right, and keeps things simple.</p>
+        <p>Whether it's hauling a load across state lines or replacing the worn floor of a trailer, the same care goes into every single job.</p>
+        <div class="about-quote">
+          <p>"If I take the job, it gets done right. That's the only way I know how to work."</p>
+          <cite>— Levon Harutyunyan, Owner</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery">
+  <div class="section-wrap">
+    <div class="section-label">Work Photos</div>
+    <h2>Out in the Field</h2>
+    <div class="gallery-grid">
+      <!-- TO ADD PHOTOS: for each item, put file path in img src and change display:none → display:block, remove ph-icon and ph-txt -->
+      <div class="ph-box gallery-item tall">
+        <img src="" alt="Work photo" />
+        <div class="ph-icon" style="font-size:2.2rem">📷</div>
+        <div class="ph-txt">Work photo</div>
+      </div>
+      <div class="ph-box gallery-item">
+        <img src="" alt="Work photo" />
+        <div class="ph-icon">📷</div>
+        <div class="ph-txt">Work photo</div>
+      </div>
+      <div class="ph-box gallery-item">
+        <img src="" alt="Work photo" />
+        <div class="ph-icon">📷</div>
+        <div class="ph-txt">Work photo</div>
+      </div>
+      <div class="ph-box gallery-item">
+        <img src="" alt="Work photo" />
+        <div class="ph-icon">📷</div>
+        <div class="ph-txt">Work photo</div>
+      </div>
+      <div class="ph-box gallery-item">
+        <img src="" alt="Work photo" />
+        <div class="ph-icon">📷</div>
+        <div class="ph-txt">Work photo</div>
+      </div>
+    </div>
+    <div class="gallery-note">📷 Photos of Levon's work coming soon</div>
+  </div>
+</div>
+
+<!-- AREA -->
+<div id="area">
+  <div class="section-wrap" style="padding-top:0">
+    <div class="section-label">Where We Work</div>
+    <h2>West Coast Coverage</h2>
+    <div class="area-card">
+      <div class="area-card-icon">📍</div>
+      <div>
+        <h3>Serving the West Coast</h3>
+        <p>Available for load transport and trailer decking work throughout California, Oregon, Washington, and surrounding areas.</p>
+        <div class="states">
+          <span class="state-tag">California</span>
+          <span class="state-tag">Oregon</span>
+          <span class="state-tag">Washington</span>
+          <span class="state-tag">Nevada</span>
+          <span class="state-tag">Arizona</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="section-wrap contact-center">
+    <div class="section-label">Get In Touch</div>
+    <h2>Ready to Work?<br>Give Levon a Call.</h2>
+    <p>The fastest way to get a quote or book a job is a simple phone call. No forms, no hassle — just Levon.</p>
+    <div class="contact-card">
+      <span class="c-label">Call or Text Levon</span>
+      <a href="tel:5550000000">(555) 000-0000</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Green Freight · Levon Harutyunyan &nbsp;·&nbsp; West Coast Trucking &amp; Trailer Decking
+</footer>
+
+</body>
+</html>
